@@ -1,0 +1,208 @@
+{% extends 'index.html' %}
+{% load static %}
+
+<html>
+<head>
+
+     <title>
+        {% block 'title' %}
+        Login
+        {% endblock %}
+    </title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+<style>
+
+ {% block 'style' %}
+
+* {
+   box-sizing: border-box;
+}
+body{
+   background-image: url("{% static 'images/ve1.png' %}");
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+.imageColumn {
+   float: left;
+   width: 25%;
+   padding: 10px;
+}
+
+        .navbar{
+            background-color: white;
+            border-radius: 3px;
+
+        }
+        .navbar ul{
+            overflow: auto;
+        }
+        .navbar li{
+            float:right;
+            list-style: none;
+            margin: 20px 20px;
+
+        }
+        .navbar li a{
+            padding: 3px 3px;
+            text-decoration: none;
+            color: black;
+        }
+        .navbar li a:hover{
+            color: red
+        }
+        .search{
+            float: right;
+            color: white;
+            padding: 12px 75px;
+        }
+        .navbar input{
+            border: 2px solid black;
+            border-radius: 14px;
+            padding: 30px 17px;
+            width: 129px;
+        }
+
+input[type=text],input[type=password],input[type=number],input[type=email],
+select,input[type=date]
+{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  box-sizing: border-box;
+}
+
+label
+{
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.logo
+{
+  position: relative;
+  float: left;
+  width: 100;
+  top:0
+}
+.box {
+  position: relative;
+  margin: 40px auto;
+  width: 400px;
+  height: 350px;
+  background: grey;
+  border-radius: 2px;
+}
+
+.box::before,
+.box::after {
+  content: '';
+  position: absolute;
+  bottom: 10px;
+  width: 40%;
+  height: 10px;
+  box-shadow: 0 5px 14px rgba(0,0,0,.7);
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
+.box::before {
+  left: 15px;
+  transform: skew(-5deg) rotate(-5deg);
+}
+
+.box::after {
+  right: 15px;
+  transform: skew(5deg) rotate(5deg);
+}
+
+.box:hover::before,
+.box:hover::after {
+  box-shadow: 0 2px 14px rgba(0,0,0,.4);
+}
+
+.box:hover::before {
+  left: 5px;
+}
+
+.box:hover::after {
+  right: 5px;
+}
+.btn {
+  display:flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-30%, 240%);
+  -ms-transform: translate(120%, 120%);
+  background-color: #0096FF;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  text-align: center;
+}
+.btn:hover {
+  background-color: black;
+}
+.centered {
+  position: absolute;
+  top: 60%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+}
+{% endblock %}
+
+    </style>
+</head>
+<body>
+{% block 'body' %}
+
+<h3 align="center"><mark style="color:'red;'">{{msg}}</mark></h3>
+<form method="post" action="{% url 'checkemplogin' %}">
+{% csrf_token %}
+
+        <table align="right" style="padding:100px 100px">
+
+<tr>
+<td><label>Username</label></td>
+<td><input type="text" name="eusername" required="required"/></td>
+</tr>
+
+<tr><td></td></tr>
+<br><br>
+<tr>
+<td><label>Password</label></td>
+<td><input type="password" name="epassword" required="required"/></td>
+</tr>
+
+<tr><td></td></tr>
+<tr><td></td></tr>
+
+<tr align=center>
+<td colspan=2><input type="submit" value="Login" class="button"></td>
+</tr>
+</table>
+</form>
+<center>
+    <div class="container">
+      <img src="{% static 'images/tl2.jpg' %}"alt="Project management system" width="700" height="500" class="img" align="center">
+  <div class="centered">
+     <h1 style="font-family:broadway;" align="center" >Welcome back...! <br></h1>
+    <h2 style="font-family:Bahnschrift Condensed;" align="center">TO start working towards<br>your projects please <br><b>login</b> to our website..<br></h2>
+   <h2 style="font-family:Bahnschrift Condensed;" align="center">Dont have account yet!<br>Click the button to get registered..</h2>
+   <button class="btn" onclick="window.location.href = 'empregistration';">Get Started For Free</button><br>
+
+  </div>
+</div>
+      </center>
+{% endblock %}
+</body>
+</html>

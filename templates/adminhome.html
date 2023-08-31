@@ -1,0 +1,376 @@
+{% load static %}
+<html>
+<head>
+
+    <title>
+        {% block 'title' %}
+        Main
+        {% endblock %}
+    </title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+<style>
+
+{% block 'style' %}
+
+* {
+   box-sizing: border-box;
+}
+body{
+   background-image: url("{% static 'images/ah.jpg' %}");
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+.imageColumn {
+   float: left;
+   width: 25%;
+   padding: 10px;
+}
+
+        .navbar{
+            background-color: white;
+            border-radius: 3px;
+
+        }
+        .navbar ul{
+            overflow: auto;
+        }
+        .navbar li{
+            float:right;
+            list-style: none;
+            margin: 13px 20px;
+
+        }
+        .navbar li a{
+            padding: 3px 3px;
+            text-decoration: none;
+            color: black;
+        }
+        .navbar li a:hover{
+            color: red
+        }
+        .search{
+            float: right;
+            color: white;
+            padding: 12px 75px;
+        }
+        .navbar input{
+            border: 2px solid black;
+            border-radius: 14px;
+            padding: 3px 17px;
+            width: 129px;
+        }
+        h1 {
+	font-size: 5.25vmin;
+	text-align: center;
+	color: white;
+}
+p {
+	font-size: max(10pt, 2.5vmin);
+	line-height: 1.4;
+	color: #0e390e;
+	margin-bottom: 1.5rem;
+}
+
+.wrap {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	width: 85vmin;
+	height: 25em;
+	border: 8px solid;
+	border-image: linear-gradient(-50deg, lightblue,lightblue, lightblue, lightblue, lightblue, lightblue, lightblue) 1;
+	margin: 2rem auto;
+	transition: .3s ease-in-out;
+	position: relative;
+	overflow: hidden;
+}
+.overlay {
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 100%;
+	padding: 1rem .75rem;
+	background: darkslategrey;
+	transition: .4s ease-in-out;
+	z-index: 1;
+}
+.overlay-content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 15vmin;
+	height: 100%;
+	padding: .5rem 0 0 .5rem;
+	border: 3px solid;
+	border-image:
+    	linear-gradient(
+      	to bottom,
+      	#AEA724 5%,
+      	lightblue 35% 65%,
+      	#AEA724 95%
+    	) 0 0 0 100%;
+	transition: .3s ease-in-out .2s;
+	z-index: 1;
+}
+.image-content {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 60vmin;
+	height: 100%;
+	background-image: "{% static 'images/h1.jpg' %}"alt="Project management system" width="300" height="300" ;
+	background-size: cover;
+	transition: .3s ease-in-out;
+	border: lightblue;
+}
+
+.dots {
+	position: absolute;
+	bottom: 1rem;
+	right: 2rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 55px;
+	height: 4vmin;
+	transition: .3s ease-in-out .3s;
+}
+.dot {
+	width: 14px;
+	height: 14px;
+	background: yellow;
+	border: 1px solid indigo;
+	border-radius: 50%;
+	transition: .3s ease-in-out .3s;
+}
+
+.text {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 60vmin;
+	height: 100%;
+	padding: 3vmin 4vmin;
+	background: #fff;
+	box-shadow: inset 1px 1px 15px 0 rgba(0 0 0 / .4);
+	overflow-y: scroll;
+}
+
+.wrap:hover .overlay
+ {
+	transform: translateX(-60vmin);
+}
+.wrap:hover .image-content {
+	width: 30vmin;
+}
+.wrap:hover .overlay-content {
+	border: none;
+	transition-delay: .2s;
+	transform: translateX(60vmin);
+}
+.wrap:hover .dots {
+	transform: translateX(1rem);
+}
+.wrap:hover .dots .dot {
+	background: white;
+}
+
+
+/* Animations and timing delays */
+.animate {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(.26, .53, .74, 1.48);
+  animation-fill-mode: backwards;
+}
+/* Pop In */
+.pop { animation-name: pop; }
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5, 0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+}
+
+/* Slide In */
+.slide { animation-name: slide; }
+@keyframes slide {
+  0% {
+    opacity: 0;
+    transform: translate(4em, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+/* Slide Left */
+.slide-left { animation-name: slide-left; }
+@keyframes slide-left {
+  0% {
+    opacity: 0;
+    transform: translate(-40px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+.slide-up {animation-name: slide-up;}
+@keyframes slide-up {
+	0% {
+		opacity: 0;
+		transform: translateY(3em);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.delay-1 {
+  animation-delay: 0.3s;
+}
+.delay-2 {
+  animation-delay: 0.6s;
+}
+.delay-3 {
+  animation-delay: 0.9s;
+}
+.delay-4 {
+  animation-delay: 1.2s;
+}
+.delay-5 {
+  animation-delay: 1.5s;
+}
+.delay-6 {
+  animation-delay: 1.8s;
+}
+.delay-7 {
+  animation-delay: 2.1s;
+}
+.delay-8 {
+  animation-delay: 2.4s;
+}
+.column {
+  float: left;
+  width: 50%;
+  padding: 0 10px;
+}
+
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 20%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+         {% endblock %}
+
+</style>
+
+
+
+</head>
+<body>
+
+<h1 align=center>Project Management System!..</h1>
+
+<br>
+
+ <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'adminhome' %}">Home</a></li>
+                <li><a href="{% url 'adddept' %}">Add Department</a></li>
+                <li><a href="{% url 'updatedept' %}">Update Department</a></li>
+                <li><a href="{% url 'viewdepts' %}">View Deparments</a></li>
+                <li><a href="{% url 'viewemps' %}">View Teams</a></li>
+                <li><a href="{% url 'addproduct' %}">Add Project</a></li>
+                <li><a href="{% url 'viewaproducts' %}">View Project</a></li>
+                <li><a href="{% url 'adminlogout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+<br>
+<h4 align="left">Hi, {{auname}}</h4>
+{% block 'body' %}
+<div class="row">
+    <div class="column">
+        <div class="wrap animate pop">
+		<div class="overlay" style=" background-image: url('{% static 'images/ah2.jpg' %}');
+   background-repeat: no-repeat;
+   background-size: cover;">
+			<div class="overlay-content animate slide-left delay-2">
+				<h1 class="animate slide-left pop delay-4">Guide Projects</h1>
+				<p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">Kingdom: <em>Plantae</em></p>
+			</div>
+			<div class="image-content animate slide delay-5"></div>
+					<div class="dots animate">
+						<div class="dot animate slide-up delay-6"></div>
+						<div class="dot animate slide-up delay-7"></div>
+						<div class="dot animate slide-up delay-8"></div>
+					</div>
+		</div>
+			<div class="text">
+				<p>This Project Management System in Django created based on python, Django, <br>
+                    and SQLITE3 Database. The Project Management System is a web application that<br>
+                    helps with project planning, resource allocation, organization, monitoring, and
+                    <br></br>estimation, among other things.
+                    <p>Depending on the specific requirements, project management software
+                <br>is developed to handle a wide variety of project-related tasks, including cost control,
+                <br>budget management, quality management, forecasting, planning, and assignment, as well as many more.</p>
+			</div>
+	</div>
+    </div>
+    <div class="column">
+        <div class="wrap animate pop">
+		<div class="overlay" style=" background-image: url('{% static 'images/ah1.jpg' %}');
+   background-repeat: no-repeat;
+   background-size: cover;">
+			<div class="overlay-content animate slide-left delay-2">
+				<h1 class="animate slide-left pop delay-4">Student Projects</h1>
+				<p class="animate slide-left pop delay-5" style="color: white; margin-bottom: 2.5rem;">Kingdom: <em>Plantae</em></p>
+			</div>
+			<div class="image-content animate slide delay-5"></div>
+					<div class="dots animate">
+						<div class="dot animate slide-up delay-6"></div>
+						<div class="dot animate slide-up delay-7"></div>
+						<div class="dot animate slide-up delay-8"></div>
+					</div>
+		</div>
+			<div class="text">
+				<p>This Project Management System in Django created based on python, Django, <br>
+                    and SQLITE3 Database. The Project Management System is a web application that<br>
+                    helps with project planning, resource allocation, organization, monitoring, and
+                    <br></br>estimation, among other things.
+                    <p>Depending on the specific requirements, project management software
+                <br>is developed to handle a wide variety of project-related tasks, including cost control,
+                <br>budget management, quality management, forecasting, planning, and assignment, as well as many more.</p>
+			</div>
+	</div>
+    </div>
+</div>
+{% endblock %}
+</body>
+</html>

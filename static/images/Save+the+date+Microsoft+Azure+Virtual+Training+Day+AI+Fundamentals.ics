@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+METHOD:PUBLISH
+PRODID:-//Microsoft Corporation//Outlook 11.0 MIMEDIR//EN
+BEGIN:VEVENT
+UID:30676645e044a3eac8
+DTSTAMP:20230512T091802Z
+DTSTART:20230525T070000Z
+DTEND:20230525T102500Z
+SUMMARY:Save the date: Microsoft Azure Virtual Training Day: AI Fundamentals
+LOCATION:Digital Event
+DESCRIPTION:How to join the virtual training: \n\nClick the link to join: https://event.on24.com/wcc/r/4189361/B0750FE69297CCD4DDD6AB390B1BE153. Please note\, this link is unique for each registrant and should not be forwarded.
+END:VEVENT
+END:VCALENDAR

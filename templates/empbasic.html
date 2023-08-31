@@ -1,0 +1,95 @@
+{% load static %}
+<html>
+<head>
+
+    <title>
+        {% block 'title' %}
+       Employee Home
+        {% endblock %}
+    </title>
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+<style>
+
+ {% block 'style' %}
+
+* {
+   box-sizing: border-box;
+}
+body{
+   background-image: url("{% static 'images/ve1.png' %}");
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+.imageColumn {
+   float: left;
+   width: 25%;
+   padding: 10px;
+}
+
+        .navbar{
+            background-color: white;
+            border-radius: 3px;
+
+        }
+        .navbar ul{
+            overflow: auto;
+        }
+        .navbar li{
+            float:left;
+            list-style: none;
+            margin: 13px 20px;
+
+        }
+        .navbar li a{
+            padding: 3px 3px;
+            text-decoration: none;
+            color: black;
+        }
+        .navbar li a:hover{
+            color: red
+        }
+        .search{
+            float: right;
+            color: white;
+            padding: 12px 75px;
+        }
+        .navbar input{
+            border: 2px solid black;
+            border-radius: 14px;
+            padding: 3px 17px;
+            width: 129px;
+        }
+
+        {% endblock %}
+
+    </style>
+
+
+
+</head>
+<body>
+
+<h1 align=center>Project Management System</h1>
+ <header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{% url 'emphome' %}">Home</a></li>
+                <li><a href="{% url 'empprofile' %}">Employee Profile</a></li>
+                <li><a href="{% url 'empchangepwd' %}">Change Password</a></li>
+                <li><a href="{% url 'vieweproducts' %}">View Projects</a></li>
+                <li><a href="{% url 'emplogout' %}">Logout</a></li>
+                <li><a href="{% url 'calender' %}">Dead Lines</a></li>
+            </ul>
+        </nav>
+    </header>
+               <h4 align="right">Welcome back!.. {{ename}}</h4>
+{% block 'body' %}
+
+{% endblock %}
+
+
+
+</body>
+</html>
